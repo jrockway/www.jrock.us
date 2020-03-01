@@ -1,0 +1,36 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Arrival Times</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="mta.js"></script>
+    <style>
+      body { font-family: "Helvetica Neue"; }
+      .route { color: grey; font-size: 105%; }
+      .route-1 { color: #E31D00; }
+      .route-2 { color: #E31D00; }
+      .route-3 { color: #E31D00; }
+      .route-A { color: #0079C2; }
+      .route-C { color: #0079C2; }
+      .route-E { color: #0079C2; }
+      .station { font-size: 110%; font-weight: bold; }
+      .new {
+          text-decoration-line: underline;
+          text-decoration-color: green;
+          -webkit-text-decoration-line: underline;
+          -webkit-text-decoration-color: green;
+      }
+      .old {
+          text-decoration-line: line-through;
+          text-decoration-color: red;
+          -webkit-text-decoration-line: line-through;
+          -webkit-text-decoration-color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <table id="times"></table>
+    <p id="status"></p>
+    <script>$(document).ready(() => load(true));</script>
+  </body>
+  </html>

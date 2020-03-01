@@ -1,0 +1,58 @@
+resources:
+    - name: source
+      type: git
+      icon: github-circle
+      source:
+          uri: https://github.com/jrockway/www.jrock.us
+    - name: www-version
+      type: semver
+      icon: counter
+      source:
+          driver: s3
+          bucket: ((versions.bucket))
+          access_key_id: ((versions.access_key_id))
+          secret_access_key: ((versions.secret_access_key))
+          region_name: ((versions.region_name))
+          endpoint: ((versions.endpoint))
+          key: www-version
+          initial_version: 0.0.1
+    - name: www-image
+      type: registry-image
+      icon: docker
+      source:
+          repository: registry.jrock.us/www
+          username: ((registry.username))
+          password: ((registry.password))
+
+jobs:
+    - name: www
+      public: true
+      plan:
+          - get: source
+            trigger: true
+          - get: www-version
+            params:
+                bump: patch
+          - task: build
+            privileged: true
+            config:
+                platform: linux
+                image_resource:
+                    type: registry-image
+                    source:
+                        repository: vito/oci-build-task
+                params:
+                    CONTEXT: source
+                inputs:
+                    - name: source
+                outputs:
+                    - name: image
+                run:
+                    path: build
+          - put: www-image
+            params:
+                image: image/image.tar
+                additional_tags: www-version/version
+          - put: www-version
+            params:
+                file: www-version/version
