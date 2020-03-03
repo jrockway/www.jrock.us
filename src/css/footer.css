@@ -1,0 +1,31 @@
+.footer {
+  font-family: "Iosevka", monospace;
+  padding: 10px 0;
+  flex-grow: 0;
+  opacity: .5;
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0;
+    width: 760px;
+    max-width: 100%;
+
+    @media (--tablet) {
+      flex-direction: column;
+    }
+  }
+
+  a {
+    color: inherit;
+  }
+
+  .copyright {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 1rem;
+    color: var(--light-color-secondary);
+  }
+}

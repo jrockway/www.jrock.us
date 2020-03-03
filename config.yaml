@@ -1,0 +1,23 @@
+baseURL: "https://jrock.us/"
+languageCode: "en-us"
+title: "jrock.us"
+paginate: 10
+params:
+    fullWidthTheme: true
+    centerTheme: true
+    subtitle: ""
+    author:
+        name: "Jonathan Rockway"
+        email: "jon@jrock.us"
+languages:
+    en:
+        languageName: "English"
+        title: "jrock.us"
+        subtitle: ""
+        keywords: ""
+        menuMore: "Show more"
+        readMore: "Read more"
+        readOtherPosts: "To the future, or to the past?"
+        logo:
+            logoText: "jrock.us"
+            logoHomeLink: "/"

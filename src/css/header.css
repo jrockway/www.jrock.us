@@ -1,0 +1,43 @@
+@define-mixin menu {
+  position: absolute;
+  background: var(--background);
+  box-shadow: var(--shadow);
+  color: white;
+  border: 2px solid;
+  margin: 0;
+  padding: 10px;
+  list-style: none;
+  z-index: 99;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__logo {
+    display: flex;
+    flex: 1;
+
+    &:after {
+      content: '';
+      -webkit-mask-image: repeating-linear-gradient(90deg, black, black 2px, transparent 0, transparent 10px);
+      background: linear-gradient(90deg, var(--accent), hsl(200, 100%, 57%) 17%, hsl(150, 100%, 57%) 34%, hsl(100, 100%, 57%) 51%, hsl(50, 100%, 57%) 70%, hsl(0, 100%, 57%) 87%);
+      display: block;
+      width: 100%;
+      right: 10px;
+    }
+
+    a {
+      flex: 0 0 auto;
+      max-width: 100%;
+      text-decoration: none;
+    }
+  }
+}

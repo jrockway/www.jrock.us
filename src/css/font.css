@@ -1,0 +1,13 @@
+@font-face {
+  font-family: 'Iosevka';
+  font-style:  normal;
+  font-weight: 400;
+  src: url("../fonts/iosevka-medium.woff") format("woff");
+}
+
+@font-face {
+  font-family: 'Iosevka';
+  font-style:  normal;
+  font-weight: 800;
+  src: url("../fonts/iosevka-bold.woff") format("woff");
+}
