@@ -11,14 +11,15 @@
     margin: 0;
     width: 760px;
     max-width: 100%;
-
-    @media (--tablet) {
-      flex-direction: column;
-    }
   }
 
   a {
     color: inherit;
+  }
+
+  span {
+      padding-left: 5px;
+      padding-right: 5px;
   }
 
   .copyright {
