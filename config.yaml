@@ -2,6 +2,7 @@ baseURL: "https://jrock.us/"
 languageCode: "en-us"
 title: "jrock.us"
 paginate: 10
+rssLimit: 20
 params:
     fullWidthTheme: true
     centerTheme: true
