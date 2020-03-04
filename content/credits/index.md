@@ -4,7 +4,9 @@ hidden: true
 ---
 
 This website is generated with [Hugo](https://gohugo.io/), using a heavily modified version of the
-[terminal theme](https://github.com/panr/hugo-theme-terminal).
+[terminal theme](https://github.com/panr/hugo-theme-terminal). The code font is
+[Iosevka](https://github.com/be5invis/Iosevka), which I also use for all my terminals and text
+editors. It's great!
 
 The terminal theme asks that this license be included with derived works:
 
@@ -30,3 +32,15 @@ COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
 IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ```
+
+The Iosevka font asks that this licence be included with binary forms of the font, which your
+browser downloaded for you:
+
+```
+Copyright 2015-2020, Belleve Invis (belleve@typeof.net).
+
+This Font Software is licensed under the SIL Open Font License, Version 1.1.
+```
+
+The full [SIL Open Font License](https://scripts.sil.org/cms/scripts/page.php?item_id=OFL_web) is at
+that link.
