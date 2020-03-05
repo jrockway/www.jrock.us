@@ -2,7 +2,8 @@ FROM node:13.8.0 AS node
 WORKDIR /site
 COPY package.json package-lock.json ./
 RUN npm i
-COPY . ./
+COPY webpack.config.js postcss.config.js ./
+COPY src/ ./src/
 RUN npm run build
 
 FROM klakegg/hugo:0.66.0-ext-alpine AS hugo
@@ -13,9 +14,7 @@ ENV HUGO_ENV=production
 COPY --from=node /site/static/assets/ /src/static/assets/
 RUN hugo --cleanDestinationDir
 
-
 FROM nginx:1.17.3
-
 RUN apt-get update && apt-get install --no-install-recommends --no-install-suggests -y curl
 
 WORKDIR /etc/nginx/modules
