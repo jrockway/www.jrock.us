@@ -50,9 +50,11 @@ jobs:
                 run:
                     path: build
           - put: www-image
+            attempts: 10
             params:
                 image: image/image.tar
                 additional_tags: www-version/version
           - put: www-version
+            attempts: 2
             params:
                 file: www-version/version
