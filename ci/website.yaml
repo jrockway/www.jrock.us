@@ -43,6 +43,8 @@ jobs:
                         repository: vito/oci-build-task
                 params:
                     CONTEXT: source
+                caches:
+                    - path: cache
                 inputs:
                     - name: source
                 outputs:
