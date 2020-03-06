@@ -5,7 +5,9 @@
     "repository": "https://github.com/jrockway/www.jrock.us",
     "license": "MIT",
     "scripts": {
-        "build": "webpack --mode=production"
+        "build": "webpack --mode=production",
+        "dev": "webpack --mode=development --watch",
+        "serve": "hugo serve -D --disableFastRender --bind 0.0.0.0 -b 192.168.1.59"
     },
     "browserslist": [
         "last 2 versions",
