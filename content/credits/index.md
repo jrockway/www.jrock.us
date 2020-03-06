@@ -7,7 +7,7 @@ This website is generated with [Hugo](https://gohugo.io/), using a heavily modif
 [terminal theme](https://github.com/panr/hugo-theme-terminal).
 
 The heading font is [Oswald](https://www.fontsquirrel.com/fonts/oswald). It is distributed under the
-temrs of the SIL Open Font Licnese, Version 1.1.
+terms of the SIL Open Font License, Version 1.1.
 
 The body font is [Open Sans](https://www.fontsquirrel.com/fonts/download/open-sans). It is
 distributed under the terms of the Apache 2.0 license.
@@ -40,7 +40,7 @@ IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 ```
 
-The Iosevka font asks that this licence be included with binary forms of the font, which your
+The Iosevka font asks that this license be included with binary forms of the font, which your
 browser downloaded for you:
 
 ```
