@@ -31,6 +31,7 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Oswald Light', 'Helvetica', 'Arial', sans-serif;
+    letter-spacing: 0.05em;
 }
 
 .headings--one-size {
@@ -81,6 +82,7 @@ img {
 }
 
 p {
+  margin-top: 10px;
   margin-bottom: 10px;
 }
 

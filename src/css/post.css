@@ -4,7 +4,7 @@
 
 .post {
   width: 100%;
-  text-align: left;
+  text-align: justify;
   margin: 10px auto;
   padding: 5px 0;
 
@@ -17,6 +17,7 @@
   }
 
   &-meta {
+    font-family: 'Oswald Light', 'Helvetica', 'Arial', sans-serif;
     font-size: 1rem;
     color: color-mod(var(--accent) a(70%));
   }
