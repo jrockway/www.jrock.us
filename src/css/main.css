@@ -14,7 +14,6 @@ body {
   font-family: 'OpenSans', 'Helvetica', 'Arial', sans-serif;
   font-size: 1.1rem;
   line-height: 1.54;
-  letter-spacing: 0.02em;
   background-color: color-mod(var(--accent) blend(#101020 98%));
   color: var(--color);
   text-rendering: optimizeLegibility;
@@ -31,7 +30,6 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Oswald Light', 'Helvetica', 'Arial', sans-serif;
-    letter-spacing: 0.05em;
 }
 
 .headings--one-size {
@@ -133,7 +131,6 @@ code {
   padding: 1px 2px;
   margin: 0 1px;
   font-size: 1.0rem;
-  letter-spacing: 0.025em;
 }
 
 pre {
