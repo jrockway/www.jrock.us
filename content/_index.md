@@ -1,6 +1,6 @@
 Welcome to `jrock.us`. I'm your host, Jonathan Rockway!
 
-You might enjoy [my Github](https://github.com/jrockway/).
+You might enjoy [my Github](https://github.com/jrockway/) or [my blog](/posts/).
 
 My amateur radio callsign is `KD2DTW`.
 
