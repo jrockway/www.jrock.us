@@ -236,11 +236,11 @@ dance that Kubernetes does, which involves two levels of symlinks. If you have a
 `/certs/..timestamp` (where timestamp is actually something like `2020_04_09_17_25_30.145602340`).
 So you'll have `/certs/..timestamp/tls.key`, etc., as a normal file. This current timestamp is then
 linked to a directory called `..data`. Finally, `/certs/tls.key` (and friends), are linked to
-`..data/tls.key`. When a data update arrives, the files are written to a new `..timetamp` directory,
-and the `..data` symlink is atomically replaced. This is close to what I did in the first version of
-my program, but not exactly the same. As a result, Envoy did not notice any changes my program made.
-I changed my program to do exactly what Kubernetes does, and then it started working. Now that
-program exists so you can test locally without having to understand the details ;)
+`..data/tls.key`. When a data update arrives, the files are written to a new `..timestamp`
+directory, and the `..data` symlink is atomically replaced. This is close to what I did in the first
+version of my program, but not exactly the same. As a result, Envoy did not notice any changes my
+program made. I changed my program to do exactly what Kubernetes does, and then it started working.
+Now that program exists so you can test locally without having to understand the details ;)
 
 Here is the `ls` output of that sort of directory structure:
 
