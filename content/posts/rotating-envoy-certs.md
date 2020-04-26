@@ -175,7 +175,7 @@ The result is a final `envoy.yaml` that looks like:
                                 alpn_protocols: ["h2", "http/1.1"]
                                 tls_certificate_sds_secret_configs:
                                     sds_config:
-                                        path: /home/jrockway/projects/cert-rotation-test/sds.yaml
+                                        path: /etc/envoy/sds.yaml
                     filters:
                         - name: envoy.http_connection_manager
                           typed_config:
@@ -218,9 +218,10 @@ should be feeding into your monitoring).
 When I read the changelog for Envoy 1.14, I knew I wanted to try this feature, but I also assumed
 that it wouldn't be a simple cut-n-paste job to get it working. In retrospect, I was wrong; it was
 actually simple to get working since it was designed to exactly work with Kubernetes's filesystem
-structure, and I happen to deploy on Kubernetes. I wrote a little test program, available at
-https://github.com/jrockway/cert-rotation-test, to try things out on my workstation before blindly
-forging ahead in production. This ended up taking quite a bit of time and did not work initially.
+structure, and I happen to deploy on Kubernetes. I wrote a
+[little test program](https://github.com/jrockway/cert-rotation-test), to try things out on my
+workstation before blindly forging ahead in production. This ended up taking quite a bit of time and
+did not work initially.
 
 The first version of my code assumed that the atomic updating would work like the rest of Envoy
 (through its [Runtime](https://www.envoyproxy.io/docs/envoy/latest/configuration/operations/runtime)
@@ -272,6 +273,9 @@ the code in Kubernetes that manages this. I spent about 20 minutes looking, but 
 which annoys me.)
 
 ## Conclusion
+
+In the end, this was a very simple change. Here's all I needed to do for my own personal site:
+https://github.com/jrockway/jrock.us/commit/3d986f6322b54ebce00b95079b534c5fa116bf86
 
 Anyway, I hope this is helpful to someone. I am glad I no longer have to care about certificates,
 and hopefully you don't have to either!
