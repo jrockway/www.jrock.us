@@ -87,8 +87,8 @@ configuration.
 The first step is to create another config file that contains information about the secret
 discovery. I put my main `envoy.yaml` in a ConfigMap that gets mounted into `/etc/envoy`, and just
 added a `sds.yaml` to that ConfigMap to store the SDS configuration. All it is is a plaintext
-representation of what an SDS API server would serve to Envoy, if it was getting the key material
-from a server and not the filesystem. It looks like:
+representation of what an SDS API server would serve to Envoy, if it was getting configuration from
+an xDS server and not the filesystem. It looks like:
 
     resources:
         - "@type": "type.googleapis.com/envoy.api.v2.auth.Secret"
@@ -100,21 +100,23 @@ from a server and not the filesystem. It looks like:
 
 While this looks almost exactly what we put in the main `envoy.yaml` before, this is what triggers
 the code to start watching various directories for changes with inotify and lead to the eventual
-refreshing of your certificate. We also need to make some changes to `envoy.yaml` itself. Instead of
-statically configuring the listener with a certificate, we need the listener to load the certificate
-from SDS. In the listener's `filter_chains` section, we'll change the `tls_context` to a more
-general `transport_socket`, and then point it at our `sds.yaml`. (It is not necessary to convert
+refreshing of your certificate.
+
+We also need to make some changes to `envoy.yaml` itself. Instead of statically configuring the
+listener with a certificate, we need the listener to load the certificate from SDS. In the
+listener's `filter_chains` section, we'll change the `tls_context` to a more general
+`transport_socket`, and then point it at our `sds.yaml`. (It is not necessary to convert
 `tls_context` to `transport_socket`, but `tls_context` will be gone by the end of the year, so you
 might as well change it now.)
 
-So now instead of
+So now instead of:
 
     listeners:
         - name: test
           ...
           filter_chains:
-              - transport_socket:
-            - tls_config: {...}
+            - tls_context: {...}
+              filters: [...]
 
 We'll have:
 
@@ -135,7 +137,7 @@ We'll have:
 
 Using SDS also activates other parts of Envoy's code that wants Envoy to have some identifying
 information associated with the node. You can supply that on the command line, or in the bootstrap
-config; with a `node` configuration at the top level:
+config with a `node` configuration at the top level:
 
     node:
         id: test
@@ -145,10 +147,10 @@ If you omit this, you'll get an error like:
 
     TlsCertificateSdsApi: node 'id' and 'cluster' are required. Set it either in 'node' config or via --service-node and --service-cluster options.
 
-(In production, I use "envoy" for the ID and "ingress:public:https" as the cluster name. That is
-what my [cluster discovery service](https://github.com/jrockway/ekglue/) calls my cluster. It
-doesn't matter for this, but it does matter for other things. You probably already have this set
-up.)
+(In production, I use the pod's hostname, like `envoy-b958c94b7-2fbws`, for the ID and
+`ingress:public:https` as the cluster name. That is what my
+[cluster discovery service](https://github.com/jrockway/ekglue/) calls my cluster. It doesn't matter
+for this, but it does matter for other things. You probably already have this set up.)
 
 The result is a final `envoy.yaml` that looks like:
 
@@ -164,13 +166,13 @@ The result is a final `envoy.yaml` that looks like:
                       address: 127.0.0.1
                       port_value: 10000
               listener_filters:
-                  - name: "envoy.listener.tls_inspector"
+                  - name: envoy.listener.tls_inspector
                     typed_config: {}
               filter_chains:
                   - transport_socket:
-                        name: "envoy.transport_sockets.tls"
+                        name: envoy.transport_sockets.tls
                         typed_config:
-                            "@type": "type.googleapis.com/envoy.api.v2.auth.DownstreamTlsContext"
+                            "@type": type.googleapis.com/envoy.api.v2.auth.DownstreamTlsContext
                             common_tls_context:
                                 alpn_protocols: ["h2", "http/1.1"]
                                 tls_certificate_sds_secret_configs:
@@ -194,7 +196,7 @@ The result is a final `envoy.yaml` that looks like:
                               http_filters:
                                   - name: envoy.router
 
-With that running, your certificates should be used as soon as they are renewed!
+With that running, your certificates should be used by Envoy as soon as they are rotated!
 
 There is a delay between a secret being updated and the volume mount changing, controlled by your
 cluster administrator (it's a parameter to the Kubelet) -- if you are watching the Kubernetes event
