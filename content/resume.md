@@ -1,9 +1,7 @@
 ---
-title: Jonathan Rockway's Resume
+title: Jonathan Rockway's Résumé
 date: 2020-04-28
 ---
-
-(contact information available upon request, or get it out of `whois`)
 
 I'm a software engineer who focuses on doing everything necessary to deliver an ideal experience to
 the end user. I take full responsibility for the final product and the entire engineering process;
@@ -11,11 +9,45 @@ from design documentation, implementation, code reviews and mentoring, testing, 
 maintenance of the production environment, monitoring, writing documentation; all while ensuring
 that my team's priorities are in line with our business goals.
 
-Preferred programming languages these days: Go, Typescript
+My preferred programming languages these days are Go and Typescript.
+
+(Contact information available upon request, or get it out of `whois jrock.us`!)
+
+## Interesting Personal Projects
+
+I have quite a few projects on Github; https://github.com/jrockway. Most popular are some Emacs
+libraries for managing projects and for interacting with git.
+
+I wrote some glue to [make Envoy and Kubernetes work together](https://github.com/jrockway/ekglue).
+
+You can see the [source code for my website](https://github.com/jrockway/www.jrock.us) and
+[production k8s environment](https://github.com/jrockway/jrock.us). That should give you a good idea
+of how I build and deploy applications (and other interesting things like mTLS at a personal-website
+scale.)
+
+I designed a [clock](https://github.com/jrockway/beaglebone-gps-clock) that is accurate to within
+several microseconds.
+
+In a past life, I wrote a lot of Perl and maintained or wrote
+[several popular libraries](http://search.cpan.org/~jrockway/). I am kind of over using programming
+languages that don't compile to a single binary, but, the projects are good examples of my approach
+to library design, documentation, and testing.
+
+Back when web frameworks were the cool new thing, I wrote a
+[book](https://www.packtpub.com/networking-and-servers/catalyst) about one.
+
+I am an Extra-class amateur radio operator, `KD2DTW`.
+
+Finally, I have a [blog](https://jrock.us/posts/) where you might read about what I've been up to
+more recently.
 
 ## Work Experience
 
-### Pilot Fiber - 6/2018 - 8/2019 - Senior Software Engineer
+The following section is a somewhat detailed overview of projects I've worked on. The TL;DR is that
+I've written everything from kernel modules for set-top boxes and WiFi routers, monitoring systems
+for Google, and customer-facing and internal web apps.
+
+### Pilot Fiber -- 6/2018 ~ 8/2019 -- Senior Software Engineer
 
 Pilot Fiber is a small ISP. We had four people on the software engineering team. I was hired to
 write networking tools in Go, and did that and much more.
@@ -99,11 +131,10 @@ app, and we used Typescript/gRPC-Web for the frontend. As most of my teammates w
 developers than system programmers, this got them interested in go, and so plans for converting more
 of our legacy PHP architecture to Go were started.
 
-The next project I did was develop an easy way for anyone to refer us customers. I wrote a small
-webpage that you logged into with your Google account, and from there you got a link you could send
-your friends that went to the quick signup app. When they signed up, we associated your code with
-the order, and then automatically sent you a gift card. This was another go and
-Typescript/Vue/gRPC-Web app.
+To have some reason for people to visit quick signup, I wrote a small webpage that you logged into
+with your Google account, and from there you got a link you could send your friends that went to the
+quick signup app. When they signed up, we associated your referral code with the order, and then
+automatically sent you a gift card. This was another go and Typescript/Vue/gRPC-Web app.
 
 At about this time, our production infrastructure stopped working. We were using something called
 Convox; my team started using it in late 2016, and never upgraded it. Eventually it started
@@ -132,7 +163,9 @@ know if our software worked. If it broke badly enough, someone would tell us, we
 I also moved our amazon load balancer -> ingress-nginx HTTP ingress stack to Envoy. We manually
 wrote the Envoy config for the frontend, managed certificates with letsencrypt and cert-manager, and
 terminated TLS ourself. This let us use HTTP/2 throughout our infrastructure, and not have an outage
-when Amazon forgot to auto-renew our certificates (that happened).
+when Amazon forgot to auto-renew our certificates (that happened). (Since then, I have written a
+small control plane called `ekglue` to automate some parts of using Envoy for a frontned proxy in
+Kubernetes.)
 
 I also cleaned up some of our processes during this time. I introduced company-wide blameless
 postmortems for all customer-affecting outages. I started writing them for software issues, and I
@@ -146,7 +179,7 @@ and then have a better answer for "what happens if your fiber gets cut?")
 
 We decided as a team to start requiring code reviews on every pull request, and I set up tools to
 support this like codecov.io to keep an eye on code coverage (I found that people on my team didn't
-know how to run "go tool cover") and Jenkins/Github integration, so only code that passed tests
+know how to run `go tool cover`) and Jenkins/Github integration, so only code that passed tests
 could be checked in. I think we really got our act together; codecov kept everyone honest about test
 coverage, and gave reviewers the power to push back on untested changes.
 
@@ -155,15 +188,15 @@ becuase we kind of jumped into the world of having many small services with self
 data models, and sometimes, you'd need a few of them to run at once to really cover the entire
 surface of the application. So I wrote a tool called pilot-compose that reads a list of dependencies
 from a YAML file (much like docker-compose), allocates a random port for each service, and then put
-Envoy in front of all that. "go run X" a couple times is significantly faster than docker-compose,
-which requires a container rebuild. pilot-compose was as fast as "go run" but allowed us to separate
+Envoy in front of all that. `go run X` a couple times is significantly faster than docker-compose,
+which requires a container rebuild. pilot-compose was as fast as `go run` but allowed us to separate
 static serving (webpack-dev-server could run next to the API endpoints), do grpc-web transcoding,
 route different in-browser URLs to different applications, etc. This was all configured by Envoy's
 XDS API; after reading the manifests and calculating the dependency graph, we generated a an Envoy
 config for the entire stack, dumped the raw protobuf, and pointed a local copy of Envoy at that. It
 also generated TLS certificates (and used tls_inspector to decide whether or not to serve HTTPS or
 HTTP) so that you could use https-only web features, even when visiting your desktop's web server
-from your phone. Overall, you could run any application in our repository by typing "pc" in its
+from your phone. Overall, you could run any application in our repository by typing `pc` in its
 containing directory and it would just work.
 
 The last major project I worked on was writing a single sign-on system for Pilot. We used Okta for
@@ -186,7 +219,7 @@ the iframe that Zendesk enclosed the page in was too small to show the button "c
 with Google". I made the text smaller so that it would show up even on a Macbook Air, and then
 people were using it again.
 
-### Google - 1/2012 - 10/2017 - Senior Software Engineer in Tools & Infrastructure
+### Google -- 1/2012 ~ 10/2017 -- Senior Software Engineer in Tools & Infrastructure
 
 I've worked on a number of projects at Google. Most recently, I was the team lead for the CPE
 ("customer premises equipment"; wifi routers and TV boxes) monitoring team in Google Fiber. I
@@ -237,7 +270,7 @@ Python, mentoring engineers new to Google's Python codebase by reviewing about 6
 of their own code and helping them make that perfect; so as to have the ability to review other's
 changes.
 
-### Bank of America / Merrill Lynch - 9/2009 - 12/2011 - Software Engineer
+### Bank of America / Merrill Lynch -- 9/2009 ~ 12/2011 -- Software Engineer
 
 At the Bank I worked on a team that provided market data to downstream systems. Most of this work
 was figuring out how a data vendor wanted us to retrieve the data, doing some processing, and then
@@ -268,7 +301,7 @@ programming language for everyone to use. I did not like the hacked-together tex
 required, so I wrote an Emacs library to load and save data to this system. My friends there tell me
 it's still being used today.
 
-### Infinity Interactive - 8/2007 - 9/2009 - Web Application Developer
+### Infinity Interactive -- 8/2007 ~ 9/2009 -- Web Application Developer
 
 This was a small consulting company. I mostly wrote open-source Perl libraries that we needed for
 our various projects. The most memorable project I remember was rewriting Pfizer's website from
@@ -276,38 +309,14 @@ being a bunch of JSP pages with static text to being a normal CMS. The interesti
 an Emacs library to go through every page, extract the text, replace that with a library call to
 load the text, and save that text to a database.
 
-### Doubleclick Performics - 3/2007 - 8/2007 - Perl Programmer
+### Doubleclick Performics -- 3/2007 ~ 8/2007 -- Perl Programmer
 
 I don't really remember what I did here. I remember a lot of meetings, very little programming, it
 being announced that the company was being bought by Google, and then everyone being too excited to
 do any work. I left as soon as possible.
 
-### University of Chicago - 6/2006 - 3/2007 - Web Application Developer
+### University of Chicago -- 6/2006 ~ 3/2007 -- Web Application Developer
 
 I was part of a team that designed custom websites for departments inside the University. My main
 project was rewriting the college application (the "Uncommon Application") from ColdFusion to
 object-oriented PHP.
-
-## Interesting Personal Projects
-
-I have quite a few projects on Github; https://github.com/jrockway. Most popular are some Emacs
-libraries for managing projects and for interacting with git.
-
-I wrote some glue to make Envoy and Kubernetes work together: https://github.com/jrockway/ekglue
-
-You can see the [source code for my web page](https://github.com/jrockway/www.jrock.us) and
-[production environment](https://github.com/jrockway/jrock.us). That should give you a good idea of
-how I build and deploy applications (and other interesting things like mTLS at a personal-website
-scale.)
-
-I also designed a clock that is accurate to within several microseconds:
-https://github.com/jrockway/beaglebone-gps-clock
-
-In a past life, I wrote a lot of Perl and maintained or wrote several popular libraries:
-http://search.cpan.org/~jrockway/. While I didn't use Perl at all at Google, the projects are good
-examples of my approach to library design, documentation, and testing.
-
-Back when web frameworks were the cool new thing, I wrote a book about one:
-https://www.packtpub.com/networking-and-servers/catalyst
-
-Finally, I kind of sort of have a blog now: https://jrock.us/posts/
