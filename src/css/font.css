@@ -635,11 +635,3 @@
   src: url("../fonts/OpenSans/OpenSans-Regular.woff") format("woff");
   font-display: swap;
 }
-
-@font-face {
-  font-family: 'Oswald Light';
-  font-style:  normal;
-  font-weight: 300;
-  src: url("../fonts/Oswald/Oswald-Light.woff") format("woff");
-  font-display: swap;
-}
