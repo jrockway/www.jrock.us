@@ -6,11 +6,9 @@ hidden: true
 This website is generated with [Hugo](https://gohugo.io/), using a heavily modified version of the
 [terminal theme](https://github.com/panr/hugo-theme-terminal).
 
-The body font is [Open Sans](https://www.fontsquirrel.com/fonts/download/open-sans). It is
-distributed under the terms of the Apache 2.0 license.
-
-The code font is [Iosevka](https://github.com/be5invis/Iosevka), which I also use for all my
-terminals and text editors. It's great!
+The font is [Iosevka](https://github.com/be5invis/Iosevka), which I also use for all my terminals
+and text editors. It's great! (I realize that I am a crazy person for using a monospaced font for
+body text. It just looks so much more normal to me.)
 
 The terminal theme asks that this license be included with derived works:
 

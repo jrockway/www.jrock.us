@@ -627,11 +627,3 @@
 /* 	font-style: italic; */
 /* 	src: url('../fonts/Iosevka/woff2/iosevka-extendedheavyitalic.woff2') format('woff2'), url('../fonts/Iosevka/woff/iosevka-extendedheavyitalic.woff') format('woff'), url('../fonts/Iosevka/ttf/iosevka-extendedheavyitalic.ttf') format('truetype'); */
 /* } */
-
-@font-face {
-  font-family: 'OpenSans';
-  font-style:  normal;
-  font-weight: 400;
-  src: url("../fonts/OpenSans/OpenSans-Regular.woff") format("woff");
-  font-display: swap;
-}
