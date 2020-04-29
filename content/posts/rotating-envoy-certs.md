@@ -275,7 +275,7 @@ which annoys me.)
 ## Conclusion
 
 In the end, this was a very simple change. Here's all I needed to do for my own personal site:
-https://github.com/jrockway/jrock.us/commit/3d986f6322b54ebce00b95079b534c5fa116bf86
+[jrock.us#3d986...](https://github.com/jrockway/jrock.us/commit/3d986f6322b54ebce00b95079b534c5fa116bf86)
 
 Anyway, I hope this is helpful to someone. I am glad I no longer have to care about certificates,
 and hopefully you don't have to either!
