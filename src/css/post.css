@@ -8,10 +8,6 @@
   margin: 10px auto;
   padding: 5px 0;
 
-  @media (--tablet) {
-    max-width: 660px;
-  }
-
   &:not(:last-of-type) {
     border-bottom: 1px solid var(--border-color);
   }
@@ -47,7 +43,7 @@
     margin: 40px 0;
     padding: 20px;
 
-    @media (--phone) {
+    @media (--mobile) {
       padding: 10px;
       border-width: 10px;
     }

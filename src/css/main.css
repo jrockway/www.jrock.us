@@ -22,10 +22,6 @@ body {
   font-variant-ligatures: contextual;
   -webkit-overflow-scrolling: touch;
   -webkit-text-size-adjust: 100%;
-
-  @media (--phone) {
-    font-size: 1rem;
-  }
 }
 
 .headings--one-size {
@@ -139,11 +135,6 @@ pre {
     margin-top: -40px;
   }
 
-  @media (--phone) {
-    white-space: pre-wrap;
-    word-wrap: break-word;
-  }
-
   code {
     background: none !important;
     margin: 0;
@@ -159,7 +150,7 @@ blockquote {
   margin: 40px 0;
   padding: 25px;
 
-  @media (--phone) {
+  @media (--mobile) {
     padding-right: 0;
   }
 
@@ -211,7 +202,7 @@ ol {
     position: relative;
   }
 
-  @media (--phone) {
+  @media (--mobile) {
     margin-left: 20px;
   }
 
@@ -229,7 +220,7 @@ ol ol {
   display: flex;
   flex-direction: column;
   padding: 40px;
-  max-width: 864px;
+  max-width: 1080px;
   min-height: 100vh;
   border-right: 1px solid rgba(255, 255, 255, 0.1);
 
@@ -239,11 +230,7 @@ ol ol {
     margin: 0 auto;
   }
 
-  &.full {
-      /*max-width: 100%;*/
-  }
-
-  @media (--phone) {
+  @media (--mobile) {
     padding: 20px;
   }
 }
