@@ -1,7 +1,7 @@
 FROM node:13.8.0 AS node
 WORKDIR /site
 COPY package.json package-lock.json ./
-RUN npm i
+RUN npm ci
 COPY webpack.config.js postcss.config.js ./
 COPY src/ ./src/
 RUN npm run build
