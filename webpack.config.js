@@ -2,7 +2,6 @@ const Webpack = require("webpack");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const CleanPlugin = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 
 const path = require("path");
 
@@ -79,11 +78,6 @@ module.exports = {
       name: "vendor",
       minChunks: 2,
     },
-    minimizer: [
-      new UglifyJsPlugin({
-        sourceMap: true,
-      }),
-    ],
   },
   plugins: [new CleanPlugin(join("static/assets")), new ExtractTextPlugin("[name]")],
 };
