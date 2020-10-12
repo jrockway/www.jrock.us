@@ -1,0 +1,126 @@
+/*
+        This font software is the property of Commercial Type.
+
+        You may not modify the font software, use it on another website, or install it on a computer.
+
+        License information is available at http://commercialtype.com/eula
+        For more information please visit Commercial Type at http://commercialtype.com or email us at info[at]commercialtype.com
+
+        Copyright (C) 2020 Schwartzco Inc.
+        License: 2010-HIXDBD     
+*/
+
+
+@font-face {
+  font-family: 'Atlas Grotesk Web';
+  src: url('AtlasGrotesk-MediumItalic-Web.woff2') format('woff2'),
+       url('AtlasGrotesk-MediumItalic-Web.woff') format('woff');
+  font-weight:  500;
+  font-style:   italic;
+  font-stretch: normal;
+}
+
+.AtlasGrotesk-MediumItalic-Web {
+  font-family: 'Atlas Grotesk Web';
+  font-weight:  500;
+  font-style:   italic;
+  font-stretch: normal;
+}
+
+
+@font-face {
+  font-family: 'Atlas Grotesk Web';
+  src: url('AtlasGrotesk-Medium-Web.woff2') format('woff2'),
+       url('AtlasGrotesk-Medium-Web.woff') format('woff');
+  font-weight:  500;
+  font-style:   normal;
+  font-stretch: normal;
+}
+
+.AtlasGrotesk-Medium-Web {
+  font-family: 'Atlas Grotesk Web';
+  font-weight:  500;
+  font-style:   normal;
+  font-stretch: normal;
+}
+
+
+@font-face {
+  font-family: 'Atlas Grotesk Web';
+  src: url('AtlasGrotesk-ThinItalic-Web.woff2') format('woff2'),
+       url('AtlasGrotesk-ThinItalic-Web.woff') format('woff');
+  font-weight:  100;
+  font-style:   italic;
+  font-stretch: normal;
+}
+
+.AtlasGrotesk-ThinItalic-Web {
+  font-family: 'Atlas Grotesk Web';
+  font-weight:  100;
+  font-style:   italic;
+  font-stretch: normal;
+}
+
+
+@font-face {
+  font-family: 'Atlas Grotesk Web';
+  src: url('AtlasGrotesk-Thin-Web.woff2') format('woff2'),
+       url('AtlasGrotesk-Thin-Web.woff') format('woff');
+  font-weight:  100;
+  font-style:   normal;
+  font-stretch: normal;
+}
+
+.AtlasGrotesk-Thin-Web {
+  font-family: 'Atlas Grotesk Web';
+  font-weight:  100;
+  font-style:   normal;
+  font-stretch: normal;
+}
+
+/*
+        This font software is the property of Commercial Type.
+
+        You may not modify the font software, use it on another website, or install it on a computer.
+
+        License information is available at http://commercialtype.com/eula
+        For more information please visit Commercial Type at http://commercialtype.com or email us at info[at]commercialtype.com
+
+        Copyright (C) 2020 Schwartzco Inc.
+        License: 2010-JSGIKC     
+*/
+
+
+@font-face {
+  font-family: 'Atlas Grotesk Web';
+  src: url('AtlasGrotesk-RegularItalic-Web.woff2') format('woff2'),
+       url('AtlasGrotesk-RegularItalic-Web.woff') format('woff');
+  font-weight:  400;
+  font-style:   italic;
+  font-stretch: normal;
+}
+
+.AtlasGrotesk-RegularItalic-Web {
+  font-family: 'Atlas Grotesk Web';
+  font-weight:  400;
+  font-style:   italic;
+  font-stretch: normal;
+}
+
+
+@font-face {
+  font-family: 'Atlas Grotesk Web';
+  src: url('AtlasGrotesk-Regular-Web.woff2') format('woff2'),
+       url('AtlasGrotesk-Regular-Web.woff') format('woff');
+  font-weight:  400;
+  font-style:   normal;
+  font-stretch: normal;
+}
+
+.AtlasGrotesk-Regular-Web {
+  font-family: 'Atlas Grotesk Web';
+  font-weight:  400;
+  font-style:   normal;
+  font-stretch: normal;
+}
+

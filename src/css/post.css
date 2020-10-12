@@ -1,88 +1,93 @@
 .posts {
-  width: 100%;
+    width: 100%;
 }
 
 .post {
-  width: 100%;
-  margin: 10px auto;
-  padding: 5px 0;
+    width: 100%;
+    margin: 10px auto;
+    padding: 5px 0;
 
-  &:not(:last-of-type) {
-    border-bottom: 1px solid var(--border-color);
-  }
-
-  &-meta {
-    color: color-mod(var(--accent) a(70%));
-  }
-
-  &-title {
-    color: var(--accent);
-    a {
-      text-decoration: none;
+    &:not(:last-of-type) {
+        border-bottom: 1px solid var(--border-color);
     }
-  }
 
-  &-tags {
-    display: block;
-    margin-bottom: 10px;
-    font-size: 1rem;
-    opacity: .5;
-
-    a {
-      text-decoration: none;
+    &-meta {
+        color: color-mod(var(--accent) a(70%));
+        font-weight: 100;
     }
-  }
 
-  &-content {
-  }
-
-  &-cover {
-    border: 20px solid var(--accent);
-    background: transparent;
-    margin: 40px 0;
-    padding: 20px;
-
-    @media (--mobile) {
-      padding: 10px;
-      border-width: 10px;
+    &-title {
+        color: var(--accent);
+        a {
+            text-decoration: none;
+        }
     }
-  }
 
-  ul {
-    list-style: none;
+    &-tags {
+        display: block;
+        margin-bottom: 10px;
+        font-size: 1rem;
+        opacity: 0.5;
+        font-weight: 100;
 
-    li:before {
-      content: '►';
-      position: absolute;
-      left: -20px;
-      color: var(--accent);
+        a {
+            text-decoration: none;
+        }
     }
-  }
+
+    &-content {
+    }
+
+    &-cover {
+        border: 20px solid var(--accent);
+        background: transparent;
+        margin: 40px 0;
+        padding: 20px;
+
+        @media (--mobile) {
+            padding: 10px;
+            border-width: 10px;
+        }
+    }
+
+    ul {
+        list-style: none;
+
+        li:before {
+            content: "►";
+            position: absolute;
+            left: -20px;
+            color: var(--accent);
+        }
+    }
 }
 
 .post--regulation {
-  h1 {
-    justify-content: center;
-  }
-
-  h2 {
-    justify-content: center;
-    margin-bottom: 10px;
-
-    & + h2 {
-      margin-top: -10px;
-      margin-bottom: 20px;
+    h1 {
+        justify-content: center;
     }
-  }
+
+    h2 {
+        justify-content: center;
+        margin-bottom: 10px;
+
+        & + h2 {
+            margin-top: -10px;
+            margin-bottom: 20px;
+        }
+    }
 }
 
 .hanchor {
-  color: color-mod(var(--accent) alpha(90%));
-  text-decoration: none;
-  margin-left: 10px;
-  visibility: hidden;
+    color: color-mod(var(--accent) alpha(90%));
+    text-decoration: none;
+    margin-left: 10px;
+    visibility: hidden;
 }
 
-h1:hover a, h2:hover a, h3:hover a, h4:hover a {
-  visibility: visible;
+h1:hover a,
+h2:hover a,
+h3:hover a,
+h4:hover a {
+    visibility: visible;
 }
