@@ -119,10 +119,6 @@ figure {
 code {
   font-family: 'Iosevka Web', monospace;
   font-feature-settings: normal;
-  background: color-mod(var(--accent) a(20%));
-  padding: 1px 2px;
-  margin: 0 1px;
-  font-size: 1.0rem;
 }
 
 pre {
