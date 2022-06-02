@@ -7,6 +7,8 @@
   {{ partial "head.html" . }}
 </head>
 <body class="">
+    <svg xmlns="http://www.w3.org/2000/svg" display="none" height="0" width="0"><symbol id="check-symbol" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check"><polyline points="20 6 9 17 4 12"></polyline></symbol></svg>
+
 {{ $container := cond $.Site.Params.FullWidthTheme "container full" (cond $.Site.Params.CenterTheme "container center" "container") }}
 
 <div class="{{- $container -}}{{- cond ($.Site.Params.oneHeadingSize | default true) " headings--one-size" "" }}">
@@ -22,6 +24,5 @@
     {{ partial "footer.html" . }}
   {{ end }}
 </div>
-
 </body>
 </html>

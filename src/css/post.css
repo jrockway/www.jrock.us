@@ -91,3 +91,21 @@ h3:hover a,
 h4:hover a {
     visibility: visible;
 }
+
+.tip {
+    background-color: #202334;
+    border: 1px solid #303344;
+    padding: 1em 1em 1em 1em;
+}
+
+.tip-icon {
+    display: inline-flex;
+    align-self: center;
+    margin-right: .5em;
+}
+
+.tip-icon img,.tip-icon svg{
+    height: 1em;
+    width: 1em;
+    fill: currentColor;
+}
