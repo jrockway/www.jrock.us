@@ -1,15 +1,25 @@
 name: Docker Image CI
 
 on:
-  push:
-    branches: [ "master" ]
-  pull_request:
-    branches: [ "master" ]
+    push:
+        branches: ["master"]
+    pull_request:
+        branches: ["master"]
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v3
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag registry.digitalocean.com/jrockus/www:$(date +%s)
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v3
+            - name: Build the Docker image
+              run:
+                  docker build . --file Dockerfile --tag
+                  registry.digitalocean.com/jrockus/www:$(date +%s)
+            - name: Install doctl
+              uses: digitalocean/action-doctl@v2
+              with:
+                  token: ${{ secrets.DIGITALOCEAN_TOKEN }}
+            - name: Log in to DO Container Registry
+              run: doctl registry login --expiry-seconds 600
+            - name: Push the Docker image
+              run: docker push registry.digitalocean.com/jrockus/www:$(date +%s)
