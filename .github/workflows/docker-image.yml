@@ -14,7 +14,7 @@ jobs:
             - name: Build the Docker image
               run:
                   docker build . --file Dockerfile --tag
-                  registry.digitalocean.com/jrockus/www:$(date +%s)
+                  registry.digitalocean.com/jrockus/www:$GITHUB_SHA
             - name: Install doctl
               uses: digitalocean/action-doctl@v2
               with:
@@ -22,4 +22,4 @@ jobs:
             - name: Log in to DO Container Registry
               run: doctl registry login --expiry-seconds 600
             - name: Push the Docker image
-              run: docker push registry.digitalocean.com/jrockus/www:$(date +%s)
+              run: docker push registry.digitalocean.com/jrockus/www:$GITHUB_SHA
