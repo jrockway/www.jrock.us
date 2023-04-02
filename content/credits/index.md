@@ -6,11 +6,8 @@ hidden: true
 This website is generated with [Hugo](https://gohugo.io/), using a heavily modified version of the
 [terminal theme](https://github.com/panr/hugo-theme-terminal).
 
-The font is [Iosevka](https://github.com/be5invis/Iosevka), which I also use for all my terminals
-and text editors. It's great! (I realize that I am a crazy person for using a monospaced font for
-body text. It just looks so much more normal to me.)
-
-The terminal theme asks that this license be included with derived works:
+The font is [Atlas Grotesk](https://www.typewolf.com/atlas-grotesk) and the code font is
+[Iosevka](https://github.com/be5invis/Iosevka).
 
 ```
 The MIT License (MIT)
