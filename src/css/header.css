@@ -27,7 +27,6 @@
 
     &:after {
       content: '';
-      -webkit-mask-image: repeating-linear-gradient(90deg, black, black 2px, transparent 0, transparent 10px);
       background: linear-gradient(90deg, var(--accent), hsl(200, 100%, 57%) 17%, hsl(150, 100%, 57%) 34%, hsl(100, 100%, 57%) 51%, hsl(50, 100%, 57%) 70%, hsl(0, 100%, 57%) 87%);
       display: block;
       width: 100%;
