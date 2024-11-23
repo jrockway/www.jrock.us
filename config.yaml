@@ -1,7 +1,8 @@
 baseURL: "https://jrock.us/"
 languageCode: "en-us"
 title: "jrock.us"
-paginate: 10
+pagination:
+    pagerSize: 10
 rssLimit: 20
 params:
     fullWidthTheme: true
@@ -12,13 +13,14 @@ params:
         email: "jon@jrock.us"
 languages:
     en:
-        languageName: "English"
-        title: "jrock.us"
-        subtitle: ""
-        keywords: ""
-        menuMore: "Show more"
-        readMore: "Read more"
-        readOtherPosts: "To the future, or to the past?"
-        logo:
-            logoText: "jrock.us"
-            logoHomeLink: "/"
+        params:
+            languageName: "English"
+            title: "jrock.us"
+            subtitle: ""
+            keywords: ""
+            menuMore: "Show more"
+            readMore: "Read more"
+            readOtherPosts: "To the future, or to the past?"
+            logo:
+                logoText: "jrock.us"
+                logoHomeLink: "/"
