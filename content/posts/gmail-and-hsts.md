@@ -1,19 +1,20 @@
 ---
 title: "Trying out HSTS; what broke?"
 date: 2020-07-05
-author: "Jonathan Rockway"
+author: "June Rockway"
 tags: ["tls", "envoy", "hsts"]
 showFullContent: false
 ---
 
-After many years of `jrock.us` being served over HTTPS, I finally remembered to enable HTTP Strict
-Transport Security. There was never any reason not to -- all traffic to any website or app at
-jrock.us goes through my reverse proxy, and it's served with a wildcard `*.jrock.us` certficiate. If
-it doesn't go through my reverse proxy, that's a bug, and should be fixed.
+After many years of `jrock.us` being served over HTTPS, I finally remembered to
+enable HTTP Strict Transport Security. There was never any reason not to -- all
+traffic to any website or app at jrock.us goes through my reverse proxy, and
+it's served with a wildcard `*.jrock.us` certficiate. If it doesn't go through
+my reverse proxy, that's a bug, and should be fixed.
 
-Several days after making this change, I closed my GMail tab, and typed `mail.jrock.us` to get it
-back. Chrome responded with "Connection closed". Google must be down! But that seems pretty
-unlikely, so I tried it in curl:
+Several days after making this change, I closed my GMail tab, and typed
+`mail.jrock.us` to get it back. Chrome responded with "Connection closed".
+Google must be down! But that seems pretty unlikely, so I tried it in curl:
 
 ```
 $ curl -v https://mail.jrock.us/
@@ -64,24 +65,27 @@ The document has moved
 
 That works, so Google must not be down. Why doesn't it work with HTTPS, though?
 
-The answer is: it was never HTTPS. I have DNS set up so that mail.jrock.us is a CNAME for
-ghs.google.com, so my server isn't handling the request. To be HTTPS, Google would have to issue a
-certificate for me. If they didn't, the browser would complain about a hostname mismatch
-(mail.jrock.us isn't ghs.google.com). But I know they're not doing that, because I have a CAA DNS
-record that says only Let's Encrypt can issue certificates for jrock.us, and I review the CT logs
-from time to time to see who is issuing certificates for me. Nobody is issuing mail.jrock.us
-certificates, so of course visiting mail.jrock.us in the browser and having it work has to mean that
-it's non-TLS. The thought did not occur to me when I was enabling HSTS, but it's obvious in
-retrospect.
+The answer is: it was never HTTPS. I have DNS set up so that mail.jrock.us is a
+CNAME for ghs.google.com, so my server isn't handling the request. To be HTTPS,
+Google would have to issue a certificate for me. If they didn't, the browser
+would complain about a hostname mismatch (mail.jrock.us isn't ghs.google.com).
+But I know they're not doing that, because I have a CAA DNS record that says
+only Let's Encrypt can issue certificates for jrock.us, and I review the CT logs
+from time to time to see who is issuing certificates for me. Nobody is issuing
+mail.jrock.us certificates, so of course visiting mail.jrock.us in the browser
+and having it work has to mean that it's non-TLS. The thought did not occur to
+me when I was enabling HSTS, but it's obvious in retrospect.
 
-I am actually super glad that I caught this, because there's a 99.999% chance that if I typed
-"mail.jrock.us" into a web browser and it asked me for my Google password, I would have typed it. It
-would have been super-easy to phish me. (Hopefully my 2FA key would have noticed that I wasn't at
-Google, but I could probably have been convinced to type a OTP. 2FA is only as strong as its weakest
-link, and while tokens are phishing-resistant, the backup systems for a lost token aren't.)
+I am actually super glad that I caught this, because there's a 99.999% chance
+that if I typed "mail.jrock.us" into a web browser and it asked me for my Google
+password, I would have typed it. It would have been super-easy to phish me.
+(Hopefully my 2FA key would have noticed that I wasn't at Google, but I could
+probably have been convinced to type a OTP. 2FA is only as strong as its weakest
+link, and while tokens are phishing-resistant, the backup systems for a lost
+token aren't.)
 
-I adjusted `mail.jrock.us` to hit my own reverse proxy, which can be configured to issue the
-redirect itself:
+I adjusted `mail.jrock.us` to hit my own reverse proxy, which can be configured
+to issue the redirect itself:
 
 ```
 - name: mail.jrock.us
@@ -109,13 +113,13 @@ redirect itself:
                     </BODY></HTML>
 ```
 
-You could get away with just issuing the redirect with an empty body, but since we have the
-opportunity to exactly duplicate the functionality that Google provides over HTTP, we do so. Maybe
-it will come in handy someday.
+You could get away with just issuing the redirect with an empty body, but since
+we have the opportunity to exactly duplicate the functionality that Google
+provides over HTTP, we do so. Maybe it will come in handy someday.
 
-Now it works again, and HTTP Strict Transport Security saved me from being phished by a shady
-network in the future.
+Now it works again, and HTTP Strict Transport Security saved me from being
+phished by a shady network in the future.
 
-(I wrote this post because there is a 100% chance that this will happen to you too. Of course, you
-probably enabled HSTS decades ago because you are responsible, so this information comes too late.
-Oh well!)
+(I wrote this post because there is a 100% chance that this will happen to you
+too. Of course, you probably enabled HSTS decades ago because you are
+responsible, so this information comes too late. Oh well!)

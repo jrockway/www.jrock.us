@@ -9,8 +9,8 @@ params:
     centerTheme: true
     subtitle: ""
     author:
-        name: "Jonathan Rockway"
-        email: "jon@jrock.us"
+        name: "June Rockway"
+        email: "june@jrock.us"
 languages:
     en:
         params:

@@ -1,7 +1,7 @@
 ---
 title: ""
 date: ""
-author: "Jonathan Rockway"
+author: "June Rockway"
 cover: ""
 tags: []
 keywords: []
